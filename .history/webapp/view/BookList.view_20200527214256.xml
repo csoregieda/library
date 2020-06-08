@@ -1,0 +1,78 @@
+<mvc:View controllerName="org.ubb.books.controller.BookList" 
+	xmlns:mvc="sap.ui.core.mvc" 
+	xmlns:core="sap.ui.core" 
+	xmlns="sap.m">
+
+	<Table id="idBooksTable" items="{
+			path: '/BOOKS',
+			sorter: {
+				path: 'ISBN'
+			}
+		}" mode="SingleSelectLeft" growing="true" growingThreshold="10">
+		<headerToolbar>
+			<Toolbar>
+				<Button icon="sap-icon://add" text="Add new book" press="onAdd"/>
+				<Button icon="sap-icon://edit" text="Update book" press="onUpdate"/>
+				<ToolbarSpacer/>
+				<Button icon="sap-icon://delete" text="Delete book" press="onDelete"/>
+			</Toolbar>
+		</headerToolbar>
+
+		<columns>
+			<Column>
+				<Text text="{i18n>title}"/>
+			</Column>
+			<Column>
+				<Text text="{i18n>author}"/>
+			</Column>
+			<Column>
+				<Text text="{i18n>publOn}"/>
+			</Column>
+			<Column>
+				<Text text="{i18n>language}"/>
+			</Column>
+			<Column>
+				<Text text="{i18n>avBooks}"/>
+			</Column>
+			<Column>
+				<Text text="{i18n>totBooks}"/>
+			</Column>
+			<Column>
+				<Text text="{i18n>createdOn}"/>
+			</Column>
+			<Column>
+				<Text text="{i18n>createdBy}"/>
+			</Column>
+			<Column>
+				<Text text="{i18n>changedOn}"/>
+			</Column>
+			<Column>
+				<Text text="{i18n>changedBy}"/>
+			</Column>
+
+		</columns>
+		<items>
+			<ColumnListItem>
+				<cells>
+					<ObjectIdentifier title="{TITLE}" text="{ISBN}"/>
+					<Text text="{AUTHOR}"/>
+					<Text text="{
+							path: 'DATE_PUBLISHED',
+							type: new sap.ui.model.type.Date({
+                style: "short",
+                UTC: true
+        })
+               			}" />
+					<Text text="{LANGUAGE}"/>
+					<Text text="{= parseInt(${AVAILBLE_BOOKS}) }"/>
+					<Text text="{= parseInt(${TOTAL_NUMBER}) }"/>
+					<Text text="{= parseInt(${CREATED_ON}) }"/>
+					<Text text="{= parseInt(${CREATED_BY}) }"/>
+					<Text text="{= parseInt(${CHANGED_ON}) }"/>
+					<Text text="{= parseInt(${CHANGED_BY}) }"/>
+				</cells>
+			</ColumnListItem>
+		</items>
+	</Table>
+
+</mvc:View>

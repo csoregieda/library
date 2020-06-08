@@ -1,0 +1,79 @@
+<core:FragmentDefinition id="idCheckedOutBooksFragment" controllerName="org.ubb.books.controller.BookList" 
+    xmlns="sap.m" 
+    xmlns:f="sap.ui.layout.form" 
+    xmlns:core="sap.ui.core">
+    <Dialog id="idCheckedOutBooksDialog">
+        <Table id="idcBooksTable" items="{
+			path: '/BOOKS',
+			sorter: {
+				path: 'ISBN'
+			}
+		}" mode="SingleSelectLeft" growing="true" growingThreshold="10">
+            <headerToolbar>
+                <Toolbar>
+                    <ToolbarSpacer/>
+                    <Button icon="sap-icon://cancel" text="Close" press="handleCloseCheckedOutBooksDialog"/>
+                </Toolbar>
+            </headerToolbar>
+            <columns>
+                <Column>
+                    <Text text="{i18n>title}"/>
+                </Column>
+                <Column>
+                    <Text text="{i18n>author}"/>
+                </Column>
+                <Column>
+                    <Text text="{i18n>publOn}"/>
+                </Column>
+                <Column>
+                    <Text text="{i18n>language}"/>
+                </Column>
+                <Column>
+                    <Text text="{i18n>avBooks}"/>
+                </Column>
+                <Column>
+                    <Text text="{i18n>totBooks}"/>
+                </Column>
+                <Column>
+                    <Text text="{i18n>createdOn}"/>
+                </Column>
+                <Column>
+                    <Text text="{i18n>createdBy}"/>
+                </Column>
+                <Column>
+                    <Text text="{i18n>changedOn}"/>
+                </Column>
+                <Column>
+                    <Text text="{i18n>changedBy}"/>
+                </Column>
+
+            </columns>
+            <items>
+                <ColumnListItem>
+                    <cells>
+                        <ObjectIdentifier title="{TITLE}" text="{ISBN}"/>
+                        <Text text="{AUTHOR}"/>
+                        <Text text="{
+							path: 'DATE_PUBLISHED',
+							type: 'sap.ui.model.type.Date'
+               			}" />
+                        <Text text="{LANGUAGE}"/>
+                        <Text text="{AVAILBLE_BOOKS}"/>
+                        <Text text="{TOTAL_NUMBER}"/>
+                        <Text text="{CREATED_ON}"/>
+                        <Text text="{CREATED_BY}"/>
+                        <Text text="{CHANGED_ON}"/>
+                        <Text text="{CHANGED_BY}"/>
+                        <!-- <Text text="{= parseInt(${AVAILBLE_BOOKS}) }"/>
+                    <Text text="{= parseInt(${TOTAL_NUMBER}) }"/>
+                    <Text text="{= parseInt(${CREATED_ON}) }"/>
+                    <Text text="{= parseInt(${CREATED_BY}) }"/>
+                    <Text text="{= parseInt(${CHANGED_ON}) }"/>
+                    <Text text="{= parseInt(${CHANGED_BY}) }"/> -->
+                    </cells>
+                </ColumnListItem>
+            </items>
+        </Table>
+    </Dialog>
+
+</core:FragmentDefinition>

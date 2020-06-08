@@ -1,0 +1,83 @@
+<mvc:View
+	controllerName="org.ubb.books.controller.BookList"
+   	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:core="sap.ui.core"
+	xmlns="sap.m">
+
+	<VBox>
+	
+	<HBox> 
+		<Button text="Delete" press="onDelete"/> 
+		<Button text="Add" press="onAdd"/> 
+	</HBox>
+	
+	<HBox> 
+		<Input id="isbnadd" placeholder="Enter here isbn"/> 
+		<Input id="title" placeholder="Enter here title"/>
+		<Input id="author" placeholder="Enter here author"/>
+		<DatePicker id="pdate" displayFormat="short" change="handleChange" class="sapUiSmallMarginBottom"/>
+		<Input id="language" placeholder="Enter here language"/>
+		<Input id="tnrbooks" placeholder="Enter here total number"/>
+		<Input id="avnrbooks" placeholder="Enter here available number"/>
+	</HBox>
+
+  	</VBox>
+
+
+   <Table id="idBooksTable"
+		items="{
+			path: '/Books',
+			sorter: {
+				path: 'Title'
+			}
+		}"
+		growing="true"
+		growingThreshold="10"
+		mode="SingleSelectLeft">
+
+		<headerToolbar>
+			<Toolbar>
+			<content>
+					
+					
+			</content>
+			</Toolbar>
+		</headerToolbar>
+	
+		<columns>
+			<Column>
+				<Text text="Title" />
+			</Column>
+			<Column>
+				<Text text="Author" />
+			</Column>
+			<Column>
+				<Text text="Published on" /> 
+			</Column>
+			<Column>
+				<Text text="Language" />
+			</Column>
+         	<Column>
+				<Text text="Available books" />
+			</Column>
+		</columns>
+		<items>
+			<ColumnListItem>
+				<cells>
+					<ObjectIdentifier
+						title="{TITLE}"
+						text="{ISBN}"/>
+					<Text text="{Author}" />
+					<Text text="{ 
+							path: 'DatePublished',
+							type: 'sap.ui.model.type.Date'
+               			}" 
+					/>
+					<Text text="{Language}" />
+					<Text text="{= parseInt(${AvailableNumber}) }" />
+				</cells>
+			</ColumnListItem>
+		</items>
+	</Table>
+   
+</mvc:View>
